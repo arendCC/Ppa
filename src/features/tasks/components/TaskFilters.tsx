@@ -51,7 +51,7 @@ export function TaskFilters({
             onClick={() => onStatusChange(value)}
             className={clsx(
               'rounded-full px-3 py-1.5 text-sm font-medium transition-colors',
-              status === value ? 'bg-accent text-white' : 'text-fg-secondary hover:text-fg',
+              status === value ? 'bg-accent-gradient text-white shadow-soft' : 'text-fg-secondary hover:text-fg',
             )}
           >
             {label}

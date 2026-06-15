@@ -4,7 +4,7 @@ import { navItems } from '@/app/navigation'
 
 export function BottomNav() {
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-10 flex border-t border-border bg-surface/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-md md:hidden">
+    <nav className="glass fixed inset-x-0 bottom-0 z-10 flex border-t border-border/60 pb-[env(safe-area-inset-bottom)] shadow-soft-lg md:hidden">
       {navItems.map(({ to, label, icon: Icon }) => (
         <NavLink
           key={to}

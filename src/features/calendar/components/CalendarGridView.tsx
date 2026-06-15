@@ -27,17 +27,17 @@ export function CalendarGridView({ days, events, onSlotClick, onEventClick }: Ca
   const timedEvents = events.filter((event) => !event.all_day)
 
   return (
-    <div className="flex h-full flex-col overflow-hidden rounded-xl border border-border bg-surface">
-      <div className="flex border-b border-border">
+    <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-border/60 bg-surface shadow-soft">
+      <div className="flex border-b border-border/60">
         <div className="shrink-0" style={{ width: GUTTER_WIDTH }} />
         <div className="grid flex-1" style={{ gridTemplateColumns: `repeat(${days.length}, minmax(0, 1fr))` }}>
           {days.map((day) => (
-            <div key={day.toISOString()} className="border-l border-border px-1 py-2 text-center">
-              <p className="text-xs text-fg-secondary">{format(day, 'EEE', { locale: de })}</p>
+            <div key={day.toISOString()} className="border-l border-border/60 px-1 py-3 text-center">
+              <p className="text-xs font-medium text-fg-secondary">{format(day, 'EEE', { locale: de })}</p>
               <p
                 className={clsx(
-                  'mx-auto mt-0.5 flex h-7 w-7 items-center justify-center rounded-full text-sm font-medium',
-                  isSameDay(day, today) ? 'bg-accent text-white' : 'text-fg',
+                  'mx-auto mt-1 flex h-7 w-7 items-center justify-center rounded-full text-sm font-medium transition-colors',
+                  isSameDay(day, today) ? 'bg-accent-gradient text-white shadow-soft' : 'text-fg',
                 )}
               >
                 {format(day, 'd')}

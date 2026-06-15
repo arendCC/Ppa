@@ -15,9 +15,12 @@ export function ProgressBar({ value, className }: ProgressBarProps) {
       aria-valuemin={0}
       aria-valuemax={100}
       aria-valuenow={clamped}
-      className={clsx('h-2 w-full overflow-hidden rounded-full bg-surface-secondary', className)}
+      className={clsx('h-2.5 w-full overflow-hidden rounded-full bg-surface-secondary', className)}
     >
-      <div className="h-full rounded-full bg-accent transition-all" style={{ width: `${clamped}%` }} />
+      <div
+        className="h-full rounded-full bg-accent-gradient transition-all duration-300 ease-out"
+        style={{ width: `${clamped}%` }}
+      />
     </div>
   )
 }

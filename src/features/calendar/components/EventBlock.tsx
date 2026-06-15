@@ -23,7 +23,7 @@ export function EventBlock({ event, style, onClick }: EventBlockProps) {
         onClick(event)
       }}
       className={clsx(
-        'absolute min-h-[20px] overflow-hidden rounded-md border-l-[3px] px-1.5 py-0.5 text-left text-xs leading-tight transition-opacity hover:opacity-80',
+        'absolute min-h-[20px] overflow-hidden rounded-lg border-l-[3px] px-1.5 py-0.5 text-left text-xs leading-tight transition-all hover:opacity-80 hover:shadow-soft',
         colors.bg,
         colors.border,
       )}

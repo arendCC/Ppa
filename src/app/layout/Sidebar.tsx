@@ -9,9 +9,12 @@ export function Sidebar() {
   const { user, signOut } = useAuth()
 
   return (
-    <aside className="hidden w-64 flex-col border-r border-border bg-surface px-3 py-4 md:flex">
-      <div className="px-3 pb-4 pt-2">
-        <span className="text-lg font-semibold text-fg">Planner</span>
+    <aside className="glass hidden w-72 flex-col border-r border-border/60 px-4 py-6 md:flex">
+      <div className="flex items-center gap-3 px-2 pb-6">
+        <div className="bg-accent-gradient flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-base font-semibold text-white shadow-soft">
+          P
+        </div>
+        <span className="text-xl font-semibold tracking-tight text-fg">Planner</span>
       </div>
 
       <nav className="flex flex-1 flex-col gap-1">
@@ -22,10 +25,10 @@ export function Sidebar() {
             end={to === '/'}
             className={({ isActive }) =>
               clsx(
-                'flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors',
+                'flex items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-medium transition-all',
                 isActive
-                  ? 'bg-accent/10 text-accent'
-                  : 'text-fg-secondary hover:bg-surface-secondary hover:text-fg',
+                  ? 'bg-surface text-accent shadow-soft'
+                  : 'text-fg-secondary hover:bg-surface/60 hover:text-fg',
               )
             }
           >
@@ -35,7 +38,7 @@ export function Sidebar() {
         ))}
       </nav>
 
-      <div className="border-t border-border px-3 pt-4">
+      <div className="border-t border-border/60 px-2 pt-4">
         <p className="truncate px-1 text-xs text-fg-secondary" title={user?.email}>
           {user?.email}
         </p>
@@ -46,7 +49,7 @@ export function Sidebar() {
             onClick={signOut}
             title="Abmelden"
             aria-label="Abmelden"
-            className="flex h-8 w-8 items-center justify-center rounded-full text-fg-secondary transition-colors hover:bg-surface-secondary hover:text-fg"
+            className="flex h-9 w-9 items-center justify-center rounded-full text-fg-secondary transition-colors hover:bg-surface hover:text-fg"
           >
             <LogOut size={16} />
           </button>

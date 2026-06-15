@@ -37,7 +37,7 @@ export function RecurringTasksSection({ categories }: RecurringTasksSectionProps
   return (
     <section className="space-y-3">
       <div className="flex items-center justify-between">
-        <h2 className="text-lg font-semibold text-fg">Wiederkehrende Aufgaben</h2>
+        <h2 className="text-lg font-semibold tracking-tight text-fg">Wiederkehrende Aufgaben</h2>
         <Button variant="secondary" onClick={handleNew}>
           <Plus size={16} className="mr-1.5" />
           Neue Vorlage
@@ -45,17 +45,17 @@ export function RecurringTasksSection({ categories }: RecurringTasksSectionProps
       </div>
 
       {isError && (
-        <div className="rounded-lg border border-cal-red/30 bg-cal-red/10 px-3 py-2 text-sm text-cal-red">
+        <div className="rounded-xl border border-cal-red/30 bg-cal-red/10 px-4 py-2.5 text-sm text-cal-red">
           Wiederkehrende Aufgaben konnten nicht geladen werden. Bitte überprüfe deine Supabase-Konfiguration.
         </div>
       )}
 
       {recurringTasks.length === 0 ? (
-        <p className="rounded-xl border border-dashed border-border px-4 py-8 text-center text-sm text-fg-secondary">
+        <p className="rounded-2xl border border-dashed border-border/60 px-4 py-10 text-center text-sm text-fg-secondary">
           Noch keine wiederkehrenden Aufgaben.
         </p>
       ) : (
-        <div className="space-y-2">
+        <div className="space-y-2.5">
           {recurringTasks.map((recurringTask) => (
             <RecurringTaskItem
               key={recurringTask.id}

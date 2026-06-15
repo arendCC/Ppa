@@ -1,5 +1,6 @@
 import { format } from 'date-fns'
 import { Link } from 'react-router-dom'
+import { Card } from '@/components/ui/Card'
 import { ProgressBar } from '@/components/ui/ProgressBar'
 import { GoalItem } from '@/features/goals/components/GoalItem'
 import { useGoals } from '@/features/goals/hooks/useGoals'
@@ -20,21 +21,21 @@ export function DailyGoalsCard() {
   }
 
   return (
-    <div className="space-y-3 rounded-xl border border-border bg-surface p-4">
+    <Card hover className="space-y-4">
       <div className="flex items-center justify-between gap-3">
-        <h2 className="text-base font-semibold text-fg">Tagesziele</h2>
-        <Link to="/goals" className="text-sm font-medium text-accent hover:underline">
+        <h2 className="text-lg font-semibold tracking-tight text-fg">Tagesziele</h2>
+        <Link to="/goals" className="text-sm font-medium text-accent transition-colors hover:text-accent-strong">
           Alle ansehen
         </Link>
       </div>
 
       {total > 0 && (
-        <>
+        <div className="space-y-2">
           <ProgressBar value={percent} />
           <p className="text-sm text-fg-secondary">
             {completed} von {total} erledigt
           </p>
-        </>
+        </div>
       )}
 
       <div className="space-y-2">
@@ -44,6 +45,6 @@ export function DailyGoalsCard() {
           goals.map((goal) => <GoalItem key={goal.id} goal={goal} onToggle={handleToggle} />)
         )}
       </div>
-    </div>
+    </Card>
   )
 }

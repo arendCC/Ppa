@@ -27,12 +27,12 @@ export function MonthView({ days, month, events, onDayClick, onEventClick }: Mon
   const today = new Date()
 
   return (
-    <div className="flex h-full flex-col overflow-hidden rounded-xl border border-border bg-surface">
-      <div className="grid grid-cols-7 border-b border-border">
+    <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-border/60 bg-surface shadow-soft">
+      <div className="grid grid-cols-7 border-b border-border/60">
         {WEEKDAY_LABELS.map((label) => (
           <div
             key={label}
-            className="border-l border-border px-2 py-2 text-center text-xs font-medium text-fg-secondary [&:nth-child(7n+1)]:border-l-0"
+            className="border-l border-border/60 px-2 py-2.5 text-center text-xs font-medium text-fg-secondary [&:nth-child(7n+1)]:border-l-0"
           >
             {label}
           </div>
@@ -66,14 +66,14 @@ export function MonthView({ days, month, events, onDayClick, onEventClick }: Mon
                 if (e.key === 'Enter' || e.key === ' ') onDayClick(day)
               }}
               className={clsx(
-                'flex min-h-[5rem] cursor-pointer flex-col gap-1 border-l border-t border-border p-1 text-left [&:nth-child(7n+1)]:border-l-0 sm:p-1.5',
-                !inCurrentMonth && 'bg-surface-secondary/50',
+                'flex min-h-[5rem] cursor-pointer flex-col gap-1 border-l border-t border-border/60 p-1 text-left transition-colors [&:nth-child(7n+1)]:border-l-0 sm:p-1.5',
+                inCurrentMonth ? 'hover:bg-surface-secondary/60' : 'bg-surface-secondary/40',
               )}
             >
               <span
                 className={clsx(
-                  'flex h-6 w-6 items-center justify-center rounded-full text-xs font-medium',
-                  isToday ? 'bg-accent text-white' : inCurrentMonth ? 'text-fg' : 'text-fg-tertiary',
+                  'flex h-6 w-6 items-center justify-center rounded-full text-xs font-medium transition-colors',
+                  isToday ? 'bg-accent-gradient text-white shadow-soft' : inCurrentMonth ? 'text-fg' : 'text-fg-tertiary',
                 )}
               >
                 {format(day, 'd')}
@@ -91,7 +91,7 @@ export function MonthView({ days, month, events, onDayClick, onEventClick }: Mon
                         onEventClick(event)
                       }}
                       className={clsx(
-                        'truncate rounded px-1 py-0.5 text-left text-[11px] font-medium',
+                        'truncate rounded-md px-1 py-0.5 text-left text-[11px] font-medium transition-opacity hover:opacity-80',
                         colors.bg,
                         colors.text,
                       )}

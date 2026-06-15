@@ -10,15 +10,15 @@ export function DashboardPage() {
   const today = new Date()
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-6 md:space-y-8">
       <div>
-        <h1 className="text-2xl font-semibold text-fg">Dashboard</h1>
-        <p className="text-fg-secondary">{format(today, 'EEEE, d. MMMM yyyy', { locale: de })}</p>
+        <h1 className="text-3xl font-bold tracking-tight text-fg md:text-4xl">Dashboard</h1>
+        <p className="mt-1.5 text-fg-secondary">{format(today, 'EEEE, d. MMMM yyyy', { locale: de })}</p>
       </div>
 
       <ProductivityOverviewCard />
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <TodayEventsCard />
         <TodayTasksCard />
         <DailyGoalsCard />

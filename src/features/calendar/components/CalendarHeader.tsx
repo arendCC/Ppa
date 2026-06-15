@@ -32,7 +32,7 @@ export function CalendarHeader({ title, view, onViewChange, onPrev, onNext, onTo
             type="button"
             onClick={onPrev}
             aria-label="Zurück"
-            className="flex h-9 w-9 items-center justify-center rounded-lg text-fg-secondary transition-colors hover:bg-surface-secondary hover:text-fg"
+            className="flex h-9 w-9 items-center justify-center rounded-xl text-fg-secondary transition-colors hover:bg-surface-secondary hover:text-fg"
           >
             <ChevronLeft size={18} />
           </button>
@@ -40,12 +40,12 @@ export function CalendarHeader({ title, view, onViewChange, onPrev, onNext, onTo
             type="button"
             onClick={onNext}
             aria-label="Weiter"
-            className="flex h-9 w-9 items-center justify-center rounded-lg text-fg-secondary transition-colors hover:bg-surface-secondary hover:text-fg"
+            className="flex h-9 w-9 items-center justify-center rounded-xl text-fg-secondary transition-colors hover:bg-surface-secondary hover:text-fg"
           >
             <ChevronRight size={18} />
           </button>
         </div>
-        <h1 className="text-lg font-semibold capitalize text-fg sm:text-xl">{title}</h1>
+        <h1 className="text-xl font-bold capitalize tracking-tight text-fg sm:text-2xl">{title}</h1>
       </div>
 
       <div className="flex items-center gap-2">
@@ -58,7 +58,7 @@ export function CalendarHeader({ title, view, onViewChange, onPrev, onNext, onTo
               onClick={() => onViewChange(value)}
               className={clsx(
                 'rounded-full px-3 py-1.5 text-sm font-medium transition-colors',
-                view === value ? 'bg-accent text-white' : 'text-fg-secondary hover:text-fg',
+                view === value ? 'bg-accent-gradient text-white shadow-soft' : 'text-fg-secondary hover:text-fg',
               )}
             >
               {label}

@@ -18,7 +18,7 @@ export function TaskItem({ task, onToggle, onClick }: TaskItemProps) {
   const priority = taskPriorityClasses[task.priority]
 
   return (
-    <div className="flex items-start gap-3 rounded-xl border border-border bg-surface p-3 transition-colors hover:border-accent/50">
+    <div className="card-hover flex items-start gap-3 rounded-2xl border border-border/60 bg-surface p-4 shadow-soft transition-colors hover:border-accent/40">
       <button
         type="button"
         aria-label={task.completed ? 'Als offen markieren' : 'Als erledigt markieren'}
@@ -27,7 +27,7 @@ export function TaskItem({ task, onToggle, onClick }: TaskItemProps) {
         className={clsx(
           'mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 transition-colors',
           task.completed
-            ? 'border-accent bg-accent text-white'
+            ? 'border-accent bg-accent-gradient text-white'
             : 'border-border text-transparent hover:border-accent',
         )}
       >

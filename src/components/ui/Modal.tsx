@@ -26,7 +26,7 @@ export function Modal({ open, onClose, title, children }: ModalProps) {
   return createPortal(
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div
-        className="animate-modal-overlay absolute inset-0 bg-black/40"
+        className="animate-modal-overlay absolute inset-0 bg-black/40 backdrop-blur-sm"
         onClick={onClose}
         aria-hidden="true"
       />
@@ -35,10 +35,10 @@ export function Modal({ open, onClose, title, children }: ModalProps) {
         role="dialog"
         aria-modal="true"
         aria-labelledby="modal-title"
-        className="animate-modal-content relative max-h-[90vh] w-full max-w-md overflow-y-auto rounded-2xl bg-surface p-5 shadow-xl"
+        className="animate-modal-content relative max-h-[90vh] w-full max-w-md overflow-y-auto rounded-3xl border border-border/60 bg-surface p-6 shadow-soft-lg"
       >
-        <div className="mb-4 flex items-center justify-between">
-          <h2 id="modal-title" className="text-lg font-semibold text-fg">
+        <div className="mb-5 flex items-center justify-between">
+          <h2 id="modal-title" className="text-xl font-semibold tracking-tight text-fg">
             {title}
           </h2>
           <button

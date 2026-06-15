@@ -20,7 +20,7 @@ export function RecurringTaskItem({ recurringTask, onToggleActive, onClick }: Re
   return (
     <div
       className={clsx(
-        'flex items-start gap-3 rounded-xl border border-border bg-surface p-3 transition-colors hover:border-accent/50',
+        'card-hover flex items-start gap-3 rounded-2xl border border-border/60 bg-surface p-4 shadow-soft transition-colors hover:border-accent/40',
         !recurringTask.active && 'opacity-60',
       )}
     >
@@ -32,7 +32,7 @@ export function RecurringTaskItem({ recurringTask, onToggleActive, onClick }: Re
         className={clsx(
           'mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 transition-colors',
           recurringTask.active
-            ? 'border-accent bg-accent text-white'
+            ? 'border-accent bg-accent-gradient text-white'
             : 'border-border text-transparent hover:border-accent',
         )}
       >

@@ -18,9 +18,6 @@ const CalendarPage = lazy(() =>
 const TasksPage = lazy(() => import('@/features/tasks/TasksPage').then((m) => ({ default: m.TasksPage })))
 const GoalsPage = lazy(() => import('@/features/goals/GoalsPage').then((m) => ({ default: m.GoalsPage })))
 const NotesPage = lazy(() => import('@/features/notes/NotesPage').then((m) => ({ default: m.NotesPage })))
-const ExpensesPage = lazy(() =>
-  import('@/features/expenses/ExpensesPage').then((m) => ({ default: m.ExpensesPage })),
-)
 const StatsPage = lazy(() => import('@/features/stats/StatsPage').then((m) => ({ default: m.StatsPage })))
 
 function withSuspense(element: ReactNode) {
@@ -44,7 +41,6 @@ export const router = createBrowserRouter([
           { path: 'tasks', element: withSuspense(<TasksPage />) },
           { path: 'goals', element: withSuspense(<GoalsPage />) },
           { path: 'notes', element: withSuspense(<NotesPage />) },
-          { path: 'expenses', element: withSuspense(<ExpensesPage />) },
           { path: 'stats', element: withSuspense(<StatsPage />) },
         ],
       },

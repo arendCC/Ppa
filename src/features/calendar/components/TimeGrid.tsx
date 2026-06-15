@@ -1,3 +1,4 @@
+import { clsx } from 'clsx'
 import { addMinutes, isSameDay, startOfDay } from 'date-fns'
 import type { MouseEvent } from 'react'
 import { GUTTER_WIDTH, HOUR_HEIGHT, SLOT_MINUTES, TOTAL_HEIGHT } from '../constants'
@@ -85,9 +86,13 @@ function DayColumn({ day, events, now, onSlotClick, onEventClick }: DayColumnPro
   const nowOffset = ((now.getHours() * 60 + now.getMinutes()) / 60) * HOUR_HEIGHT
 
   return (
-    <div className="relative cursor-pointer border-l border-border" style={{ height: TOTAL_HEIGHT }} onClick={handleClick}>
+    <div
+      className={clsx('relative cursor-pointer border-l border-border/60', isToday && 'bg-accent/[0.03]')}
+      style={{ height: TOTAL_HEIGHT }}
+      onClick={handleClick}
+    >
       {HOURS.map((hour) => (
-        <div key={hour} className="absolute inset-x-0 border-t border-border" style={{ top: hour * HOUR_HEIGHT }} />
+        <div key={hour} className="absolute inset-x-0 border-t border-border/60" style={{ top: hour * HOUR_HEIGHT }} />
       ))}
 
       {isToday && (

@@ -1,6 +1,7 @@
 import { clsx } from 'clsx'
 import { endOfDay, format, parseISO, startOfDay } from 'date-fns'
 import { Link } from 'react-router-dom'
+import { Card } from '@/components/ui/Card'
 import { eventColorClasses } from '@/features/calendar/colors'
 import { useEvents } from '@/features/calendar/hooks/useEvents'
 
@@ -12,10 +13,10 @@ export function TodayEventsCard() {
   const sorted = [...events].sort((a, b) => a.start_time.localeCompare(b.start_time))
 
   return (
-    <div className="space-y-3 rounded-xl border border-border bg-surface p-4">
+    <Card hover className="space-y-4">
       <div className="flex items-center justify-between gap-3">
-        <h2 className="text-base font-semibold text-fg">Heutige Termine</h2>
-        <Link to="/calendar" className="text-sm font-medium text-accent hover:underline">
+        <h2 className="text-lg font-semibold tracking-tight text-fg">Heutige Termine</h2>
+        <Link to="/calendar" className="text-sm font-medium text-accent transition-colors hover:text-accent-strong">
           Kalender öffnen
         </Link>
       </div>
@@ -23,7 +24,7 @@ export function TodayEventsCard() {
       {sorted.length === 0 ? (
         <p className="text-sm text-fg-tertiary">Heute keine Termine.</p>
       ) : (
-        <ul className="space-y-2">
+        <ul className="space-y-2.5">
           {sorted.map((event) => {
             const colors = eventColorClasses[event.color]
             return (
@@ -38,6 +39,6 @@ export function TodayEventsCard() {
           })}
         </ul>
       )}
-    </div>
+    </Card>
   )
 }

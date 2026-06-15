@@ -38,7 +38,7 @@ export function AllDayRow({ days, events, onEventClick }: AllDayRowProps) {
   const rowCount = Math.max(...packed.map((p) => p.count), 1)
 
   return (
-    <div className="flex border-b border-border py-1">
+    <div className="flex border-b border-border/60 py-1">
       <div className="shrink-0" style={{ width: GUTTER_WIDTH }} />
       <div
         className="grid flex-1 gap-1 px-1"
@@ -59,7 +59,7 @@ export function AllDayRow({ days, events, onEventClick }: AllDayRowProps) {
                 gridRow: index + 1,
               }}
               className={clsx(
-                'truncate rounded-md border-l-[3px] px-1.5 py-0.5 text-left text-xs font-medium text-fg transition-opacity hover:opacity-80',
+                'truncate rounded-lg border-l-[3px] px-1.5 py-0.5 text-left text-xs font-medium text-fg transition-opacity hover:opacity-80',
                 colors.bg,
                 colors.border,
               )}

@@ -1,5 +1,6 @@
 import { format } from 'date-fns'
 import { Link, useNavigate } from 'react-router-dom'
+import { Card } from '@/components/ui/Card'
 import { TaskItem } from '@/features/tasks/components/TaskItem'
 import { TASK_PRIORITY_RANK } from '@/features/tasks/priority'
 import { useTasks } from '@/features/tasks/hooks/useTasks'
@@ -27,10 +28,10 @@ export function TodayTasksCard() {
   }
 
   return (
-    <div className="space-y-3 rounded-xl border border-border bg-surface p-4">
+    <Card hover className="space-y-4">
       <div className="flex items-center justify-between gap-3">
-        <h2 className="text-base font-semibold text-fg">Heutige Aufgaben</h2>
-        <Link to="/tasks" className="text-sm font-medium text-accent hover:underline">
+        <h2 className="text-lg font-semibold tracking-tight text-fg">Heutige Aufgaben</h2>
+        <Link to="/tasks" className="text-sm font-medium text-accent transition-colors hover:text-accent-strong">
           Alle ansehen
         </Link>
       </div>
@@ -44,6 +45,6 @@ export function TodayTasksCard() {
           ))
         )}
       </div>
-    </div>
+    </Card>
   )
 }

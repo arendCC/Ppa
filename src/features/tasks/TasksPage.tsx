@@ -45,9 +45,9 @@ export function TasksPage() {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-semibold text-fg">Aufgaben</h1>
+        <h1 className="text-3xl font-bold tracking-tight text-fg md:text-4xl">Aufgaben</h1>
         <Button onClick={handleNewTask}>
           <Plus size={16} className="mr-1.5" />
           Neue Aufgabe
@@ -55,7 +55,7 @@ export function TasksPage() {
       </div>
 
       {isError && (
-        <div className="rounded-lg border border-cal-red/30 bg-cal-red/10 px-3 py-2 text-sm text-cal-red">
+        <div className="rounded-xl border border-cal-red/30 bg-cal-red/10 px-4 py-2.5 text-sm text-cal-red">
           Aufgaben konnten nicht geladen werden. Bitte überprüfe deine Supabase-Konfiguration.
         </div>
       )}
@@ -73,11 +73,11 @@ export function TasksPage() {
       />
 
       {visibleTasks.length === 0 ? (
-        <p className="rounded-xl border border-dashed border-border px-4 py-8 text-center text-sm text-fg-secondary">
+        <p className="rounded-2xl border border-dashed border-border/60 px-4 py-10 text-center text-sm text-fg-secondary">
           Keine Aufgaben gefunden.
         </p>
       ) : (
-        <div className="space-y-2">
+        <div className="space-y-2.5">
           {visibleTasks.map((task) => (
             <TaskItem key={task.id} task={task} onToggle={handleToggle} onClick={handleTaskClick} />
           ))}
@@ -91,7 +91,7 @@ export function TasksPage() {
         categories={categories}
       />
 
-      <div className="border-t border-border pt-4">
+      <div className="border-t border-border/60 pt-6">
         <RecurringTasksSection categories={categories} />
       </div>
     </div>

@@ -104,7 +104,7 @@ export function CalendarPage() {
       />
 
       {isError && (
-        <div className="rounded-lg border border-cal-red/30 bg-cal-red/10 px-3 py-2 text-sm text-cal-red">
+        <div className="rounded-xl border border-cal-red/30 bg-cal-red/10 px-4 py-2.5 text-sm text-cal-red">
           Termine konnten nicht geladen werden. Bitte überprüfe deine Supabase-Konfiguration.
         </div>
       )}
