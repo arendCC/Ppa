@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+/* Aktiviert die `dark:` Variante über eine Klasse auf <html>, statt nur
+   über prefers-color-scheme (Tailwind v4 Default). So kann der Theme-Store
+   den Modus per Klick umschalten. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ------------------------------------------------------------------ */
+/* Design Tokens                                                        */
+/* Light-Werte in :root, Dark-Werte in .dark überschreiben dieselben    */
+/* Variablen. @theme macht daraus Tailwind-Utilities (bg-bg, text-fg…). */
+/* ------------------------------------------------------------------ */
+
+:root {
+  --bg: #f2f2f7;
+  --surface: #ffffff;
+  --surface-secondary: #f9f9fb;
+  --border: #e5e5ea;
+  --fg: #1c1c1e;
+  --fg-secondary: #6e6e73;
+  --fg-tertiary: #aeaeb2;
+}
+
+.dark {
+  --bg: #000000;
+  --surface: #1c1c1e;
+  --surface-secondary: #2c2c2e;
+  --border: #38383a;
+  --fg: #f5f5f7;
+  --fg-secondary: #a1a1a6;
+  --fg-tertiary: #6e6e73;
+}
+
+@theme {
+  --font-sans: -apple-system, "SF Pro Text", "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+
+  /* Surfaces & Text (theme-abhängig über CSS-Variablen) */
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-secondary: var(--surface-secondary);
+  --color-border: var(--border);
+  --color-fg: var(--fg);
+  --color-fg-secondary: var(--fg-secondary);
+  --color-fg-tertiary: var(--fg-tertiary);
+
+  /* Akzentfarbe (Apple Blue) */
+  --color-accent: #007aff;
+  --color-accent-light: #5ac8fa;
+
+  /* Kategorie-/Kalenderfarben im Apple-Stil */
+  --color-cal-red: #ff3b30;
+  --color-cal-orange: #ff9500;
+  --color-cal-yellow: #ffcc00;
+  --color-cal-green: #34c759;
+  --color-cal-mint: #00c7be;
+  --color-cal-teal: #30b0c7;
+  --color-cal-blue: #007aff;
+  --color-cal-indigo: #5856d6;
+  --color-cal-purple: #af52de;
+  --color-cal-pink: #ff2d55;
+}
+
+/* ------------------------------------------------------------------ */
+/* Basis-Styles                                                         */
+/* ------------------------------------------------------------------ */
+
+html {
+  color-scheme: light dark;
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-bg text-fg font-sans antialiased;
+  margin: 0;
+  -webkit-tap-highlight-color: transparent;
+  text-rendering: optimizeLegibility;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Größere Überschriften wirken mit leicht negativem Letter-Spacing
+   knapper und hochwertiger (Apple HIG Typografie). */
+h1,
+h2,
+h3 {
+  letter-spacing: -0.02em;
+}
+
+/* Sichtbarer Fokusring für Tastaturnavigation. Steht außerhalb der
+   Tailwind-Layer und gewinnt damit auch gegen `outline-none`-Utilities. */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Dezente Scrollbar passend zum jeweiligen Theme. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+::selection {
+  background-color: color-mix(in srgb, var(--color-accent) 25%, transparent);
+}
+
+/* ------------------------------------------------------------------ */
+/* Animationen                                                          */
+/* ------------------------------------------------------------------ */
+
+@keyframes modal-overlay-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modal-content-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-modal-overlay {
+  animation: modal-overlay-in 0.15s ease-out;
+}
+
+.animate-modal-content {
+  animation: modal-content-in 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-modal-overlay,
+  .animate-modal-content {
+    animation: none;
+  }
+}
