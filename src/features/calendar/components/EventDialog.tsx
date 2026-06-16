@@ -87,7 +87,17 @@ export function EventDialog({ open, onClose, event, initialRange }: EventDialogP
   const isDeleting = deleteMutation.isPending
 
   function handleChange<K extends keyof EventFormValues>(key: K, value: EventFormValues[K]) {
-    setValues((prev) => ({ ...prev, [key]: value }))
+    setValues((prev) => {
+      const next = { ...prev, [key]: value }
+      // Enddatum/-zeit automatisch nachziehen wenn Start > End
+      if (key === 'startDate' && value > prev.endDate) {
+        next.endDate = value as string
+      }
+      if (key === 'startDate' && value === prev.endDate && prev.startTime >= prev.endTime) {
+        next.endTime = prev.startTime
+      }
+      return next
+    })
   }
 
   async function handleSubmit(e: FormEvent) {
@@ -182,7 +192,7 @@ export function EventDialog({ open, onClose, event, initialRange }: EventDialogP
                   type="time"
                   value={values.startTime}
                   onChange={(e) => handleChange('startTime', e.target.value)}
-                  className="w-28"
+                  className="w-32 px-2"
                 />
               )}
             </div>
@@ -200,7 +210,7 @@ export function EventDialog({ open, onClose, event, initialRange }: EventDialogP
                   type="time"
                   value={values.endTime}
                   onChange={(e) => handleChange('endTime', e.target.value)}
-                  className="w-28"
+                  className="w-32 px-2"
                 />
               )}
             </div>
