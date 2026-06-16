@@ -19,6 +19,9 @@ const TasksPage = lazy(() => import('@/features/tasks/TasksPage').then((m) => ({
 const GoalsPage = lazy(() => import('@/features/goals/GoalsPage').then((m) => ({ default: m.GoalsPage })))
 const NotesPage = lazy(() => import('@/features/notes/NotesPage').then((m) => ({ default: m.NotesPage })))
 const StatsPage = lazy(() => import('@/features/stats/StatsPage').then((m) => ({ default: m.StatsPage })))
+const FitnessPage = lazy(() =>
+  import('@/features/fitness/FitnessPage').then((m) => ({ default: m.FitnessPage })),
+)
 
 function withSuspense(element: ReactNode) {
   return <Suspense fallback={<LoadingScreen />}>{element}</Suspense>
@@ -41,6 +44,7 @@ export const router = createBrowserRouter([
           { path: 'tasks', element: withSuspense(<TasksPage />) },
           { path: 'goals', element: withSuspense(<GoalsPage />) },
           { path: 'notes', element: withSuspense(<NotesPage />) },
+          { path: 'fitness', element: withSuspense(<FitnessPage />) },
           { path: 'stats', element: withSuspense(<StatsPage />) },
         ],
       },

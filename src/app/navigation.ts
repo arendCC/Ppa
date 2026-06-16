@@ -5,6 +5,7 @@ import {
   NotebookText,
   Target,
   BarChart3,
+  Scale,
   type LucideIcon,
 } from 'lucide-react'
 
@@ -20,5 +21,6 @@ export const navItems: NavItem[] = [
   { to: '/tasks', label: 'Aufgaben', icon: CheckSquare },
   { to: '/goals', label: 'Ziele', icon: Target },
   { to: '/notes', label: 'Notizen', icon: NotebookText },
+  { to: '/fitness', label: 'Fitness', icon: Scale },
   { to: '/stats', label: 'Statistiken', icon: BarChart3 },
 ]
